@@ -1,6 +1,6 @@
 [project]
 name = "ouroboros"
-version = "3.4.1"
+version = "3.4.2"
 description = "Self-creating AI agent with constitution, background consciousness, and persistent identity"
 readme = "README.md"
 license = {text = "MIT"}
