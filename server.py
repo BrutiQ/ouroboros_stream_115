@@ -128,7 +128,7 @@ def _run_supervisor(settings: dict) -> None:
 
     try:
         from supervisor.message_bus import init as bus_init
-        from supervisor.telegram_bot import TelegramBotPollingBridge
+        from supervisor.telegram_bot import make_telegram_bridge
         from supervisor.message_bus import CompositeBridge
         from supervisor.message_bus import LocalChatBridge
 
@@ -145,20 +145,18 @@ def _run_supervisor(settings: dict) -> None:
             chat_bridge=bridge,
         )
 
-        # ── Telegram Bot Integration (Polling Mode) ────────────────────
+        # Telegram Bot Integration (Polling Mode)
         telegram_bot_enabled = bool(settings.get("TELEGRAM_ENABLED", False))
         telegram_bot = None
         if telegram_bot_enabled:
-            telegram_token = settings.get("TELEGRAM_TOKEN", "") or os.environ.get("TELEGRAM_TOKEN", "")
-            if not telegram_token:
-                log.warning("TELEGRAM_ENABLED=True but no TELEGRAM_TOKEN set. Telegram bot disabled.")
-            else:
-                telegram_bot = TelegramBotPollingBridge(token=telegram_token)
+            telegram_bot = make_telegram_bridge()
+            if telegram_bot:
                 bridge = CompositeBridge([bridge, telegram_bot])
                 log.info("CompositeBridge created: LocalChatBridge + TelegramBotPollingBridge")
+            else:
+                log.warning("Telegram bot failed to start (missing TELEGRAM_BOT_TOKEN env variable). Telegram bot disabled.")
         else:
-            log.info("Telegram bot disabled. Use Settings to enable (requires TELEGRAM_TOKEN).")
-        # ── END Telegram Bot Integration ─────────────────────────────────
+            log.info("Telegram bot disabled. Use Settings to enable (requires TELEGRAM_BOT_TOKEN env variable).")
 
         from supervisor.state import init as state_init, init_state, load_state, save_state
         from supervisor.state import append_jsonl, update_budget_from_usage, rotate_chat_log_if_needed
