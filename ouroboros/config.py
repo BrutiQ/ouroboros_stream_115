@@ -57,6 +57,9 @@ SETTINGS_DEFAULTS = {
     "OUROBOROS_WEBSEARCH_MODEL": "gpt-5.2",
     "GITHUB_TOKEN": "",
     "GITHUB_REPO": "",
+    # Telegram bot integration
+    "TELEGRAM_ENABLED": False,
+    "TELEGRAM_BOT_TOKEN": "",
     # Local model (llama-cpp-python server)
     "LOCAL_MODEL_SOURCE": "",
     "LOCAL_MODEL_FILENAME": "",
@@ -166,6 +169,7 @@ def apply_settings_to_env(settings: dict) -> None:
         "TOTAL_BUDGET", "GITHUB_TOKEN", "GITHUB_REPO",
         "OUROBOROS_BG_MAX_ROUNDS", "OUROBOROS_BG_WAKEUP_MIN", "OUROBOROS_BG_WAKEUP_MAX",
         "OUROBOROS_EVO_COST_THRESHOLD", "OUROBOROS_WEBSEARCH_MODEL",
+        "TELEGRAM_ENABLED", "TELEGRAM_BOT_TOKEN",
         "LOCAL_MODEL_SOURCE", "LOCAL_MODEL_FILENAME",
         "LOCAL_MODEL_PORT", "LOCAL_MODEL_N_GPU_LAYERS", "LOCAL_MODEL_CONTEXT_LENGTH",
         "LOCAL_MODEL_CHAT_FORMAT",
