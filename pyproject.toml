@@ -1,32 +1,32 @@
 [project]
 name = "ouroboros"
-version = "3.3.0"
+version = "3.3.1"
 description = "Self-creating AI agent with constitution, background consciousness, and persistent identity"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
 authors = [
-    {name = "Anton Razzhigaev"},
+  {name = "Anton Razzhigaev"},
 ]
 keywords = ["ai-agent", "self-modifying", "autonomous", "llm", "cloudru", "glm"]
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: MacOS",
-    "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
-    "openai>=1.66.0",
-    "requests",
-    "dulwich",
-    "starlette",
-    "uvicorn[standard]",
-    "websockets",
+  "openai>=1.66.0",
+  "requests",
+  "dulwich",
+  "starlette",
+  "uvicorn[standard]",
+  "websockets",
 ]
 
 [project.urls]
